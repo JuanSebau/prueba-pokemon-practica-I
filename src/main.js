@@ -64,7 +64,7 @@ function createPokemon(pokemon) {
     //Agrega evento click para mostrar o ocultar características
     card.addEventListener("click", () => {
         detailsContainer.classList.toggle("show-details");
-        alert(`Número: ${pokemon.id}\nNombre: ${pokemon.name}\nTipo: ${pokemon.types.map(t => t.type.name).join(', ')}`);
+        swal(title = "Información del Pokémon",`Número: ${pokemon.id}\nNombre: ${pokemon.name}\nTipo: ${pokemon.types.map(t => t.type.name).join(', ')}`);
     });
 
     // Agrega los elementos creados a la tarjeta del Pokémon

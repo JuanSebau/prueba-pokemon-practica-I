@@ -2,6 +2,7 @@
 body, h1, p {
     margin: 0;
     padding: 0;
+    background: rgb(0, 110, 255);
 }
 
 /* Estilos para el título */
@@ -9,7 +10,7 @@ body, h1, p {
     font-family: 'Dosis', sans-serif;
     text-align: center;
     margin: 20px 0;
-    color: red;
+    color: white;
 }
 
 /* Estilos para el contenedor de los Pokémon */
