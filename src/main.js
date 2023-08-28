@@ -64,14 +64,62 @@ function createPokemon(pokemon) {
     //Agrega evento click para mostrar o ocultar características
     card.addEventListener("click", () => {
         detailsContainer.classList.toggle("show-details");
-        swal(title = "Información del Pokémon",`Nombre: ${pokemon.name}\nNumber: # ${pokemon.id}\nTipo: ${pokemon.types.map(t => t.type.name).join(', ')}`);
+        showPokemonAlert(pokemon);
     });
+    // crea la función para poner la primera letra en Mayuscula 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
+    // Crear la alerta 
+    function showPokemonAlert(pokemon) {
+        const firstTypeColor = getTypeColor(pokemon.types[0].type.name);
+        const secondTypeColor = getTypeColor(pokemon.types[1]?.type.name);
+        Swal.fire({
+            title: "Información del Pokémon",
+            html: `
+            <div>
+                <p><strong># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
+                <img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" style="max-width: 100%; height: auto; width: 250px;">
+                <P><strong> Nombre </strong>
+                <p>${capitalizeFirstLetter(pokemon.name)}</p>
+                <p><strong> Tipo </strong>
+                <p><span style="color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)} </span><span style="color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
+                
+            </div>`,
+        });
+    }
+
+    function getTypeColor(type) {
+        // Define los colores para cada tipo
+        const typeColors = {
+            flying:"blue",
+            ice:"blue",
+            water:"blue",
+            fire: "red",
+            dragon: "red",
+            fighting: "yellow",
+            electric: "yellow",
+            fairy: "yellow",
+            grass: "green",
+            poison: "green",
+            bug: "green",
+            psychic: "purple",
+            rock: "brown",
+            ground: "brown",
+            steel: "gray",
+            ghost: "gray",
+            
+        };
+    
+        // Devuelve el color correspondiente al tipo
+        return typeColors[type] || "black"; // Negro como color predeterminado
+    }
+
+    
     // Agrega los elementos creados a la tarjeta del Pokémon
     card.appendChild(spriteContainer);
     card.appendChild(number);
-    //card.appendChild(name);
-    //card.appendChild(type);
     card.appendChild(detailsContainer);
 
     // Agrega la tarjeta del Pokémon al contenedor principal
