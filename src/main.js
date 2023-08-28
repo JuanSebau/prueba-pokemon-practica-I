@@ -75,6 +75,9 @@ function createPokemon(pokemon) {
     function showPokemonAlert(pokemon) {
         const firstTypeColor = getTypeColor(pokemon.types[0].type.name);
         const secondTypeColor = getTypeColor(pokemon.types[1]?.type.name);
+        const statsHtml = pokemon.stats.map(stat => {
+            return `<p>${capitalizeFirstLetter(stat.stat.name)}: ${stat.base_stat}</p>`;
+        }).join('');
         Swal.fire({
             title: "Información del Pokémon",
             html: `
@@ -85,8 +88,10 @@ function createPokemon(pokemon) {
                 <p>${capitalizeFirstLetter(pokemon.name)}</p>
                 <p><strong> Tipo </strong>
                 <p><span style="color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)} </span><span style="color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
-                
+                <p><strong> Estadisticas </strong></p>
+                ${statsHtml}
             </div>`,
+            
         });
     }
 
