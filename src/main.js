@@ -81,15 +81,19 @@ function createPokemon(pokemon) {
         Swal.fire({
             title: "Información del Pokémon",
             html: `
-            <div>
-                <p><strong># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
-                <img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" style="max-width: 100%; height: auto; width: 250px;">
-                <P><strong> Nombre </strong>
-                <p>${capitalizeFirstLetter(pokemon.name)}</p>
-                <p><strong> Tipo </strong>
-                <p><span style="color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)} </span><span style="color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
-                <p><strong> Estadisticas </strong></p>
-                ${statsHtml}
+            <div class="pokemon-alert">
+                <div class="pokemon-header">
+                    <p><strong># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
+                    <img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" class="pokemon-image">
+                </div>
+                <div class="pokemon-details">
+                    <p><strong>${capitalizeFirstLetter(pokemon.name)}</strong></p>
+                    <p> <span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
+                </div>
+                <div class="pokemon-stats">
+                    <p><strong>Estadísticas</strong></p>
+                    ${statsHtml}
+                </div>
             </div>`,
             
         });
