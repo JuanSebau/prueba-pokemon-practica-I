@@ -34,17 +34,11 @@ function createPokemonCard(pokemon) {
     const card = document.createElement("div");
     card.classList.add("pokemon-block");
 
-// Agrega imágenes, números, detalles, etc.
-    const spriteContainer = document.createElement("div");
-    spriteContainer.classList.add("img-container");
-
-    const detailsContainer = document.createElement("div");
-    detailsContainer.classList.add("details-container");
-
     const sprite = document.createElement("img");
     sprite.src = pokemon.sprites.front_default;
 
-    spriteContainer.appendChild(sprite);
+    const detailsContainer = document.createElement("div");
+    detailsContainer.classList.add("details-container");
 
     const number = document.createElement("p");
     number.textContent = `#${pokemon.id.toString().padStart(3, '0')}`;
@@ -53,16 +47,33 @@ function createPokemonCard(pokemon) {
     name.classList.add("name");
     name.textContent = capitalizeFirstLetter(pokemon.name);
 
+    const heightInfo = document.createElement("div");
+    heightInfo.classList.add("height-info");
+    heightInfo.textContent = `${(pokemon.height / 10).toFixed(1)} m`;
+    card.appendChild(heightInfo);
+
+    const weightInfo = document.createElement("div");
+    weightInfo.classList.add("weight-info");
+    weightInfo.textContent = `${(pokemon.weight / 10).toFixed(1)} kg`;
+    card.appendChild(weightInfo);
+
+    const ability = document.createElement("p");
+    ability.textContent = `Habilidad: ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}`;
+
     const type = document.createElement("p");
-    type.textContent = `Type: ${pokemon.types.map(t => t.type.name).join(', ')}`;
+    type.textContent = `Tipo: ${pokemon.types.map(t => t.type.name).join(', ')}`;
+
+    detailsContainer.appendChild(sprite);
+    detailsContainer.appendChild(number);
+    detailsContainer.appendChild(name);
+    detailsContainer.appendChild(type);
+    detailsContainer.appendChild(ability);
 
     card.addEventListener("click", () => {
         detailsContainer.classList.toggle("show-details");
         showPokemonAlert(pokemon);
     });
 
-    card.appendChild(spriteContainer);
-    card.appendChild(number);
     card.appendChild(detailsContainer);
 
     pokemonContainer.appendChild(card);
@@ -79,6 +90,10 @@ function capitalizeFirstLetter(string) {
         const statsHtml = pokemon.stats.map(stat => {
             return `<p>${capitalizeFirstLetter(stat.stat.name)}: ${stat.base_stat}</p>`;
         }).join('');
+        const height = `<p><strong>Height:</strong> ${pokemon.height / 10} m</p>`;
+        const weight = `<p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>`;
+        const ability = `<p><strong>Ability:</strong> ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}</p>`;
+
         Swal.fire({
             title: "Información del Pokémon",
             html: `
@@ -89,11 +104,14 @@ function capitalizeFirstLetter(string) {
                 </div>
                 <div class="pokemon-details">
                     <p><strong>${capitalizeFirstLetter(pokemon.name)}</strong></p>
-                    <p> <span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
+                    <p><span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
+                    ${height}
+                    ${weight}
+                    ${ability}
                 </div>
                 <div class="pokemon-stats">
                     <p><strong>Estadísticas</strong></p>
-                    ${statsHtml}
+                        ${statsHtml}
                 </div>
             </div>`,
             
@@ -133,8 +151,8 @@ function showSpinner() {
 function hideSpinner() {
         spinner.style.display = "none";
     }
-// Carga y muestra 6 Pokémones aleatorios al cargar la página
-    fetchRandomPokemons(9);
+// Carga y muestra 10 Pokémones aleatorios al cargar la página
+    fetchRandomPokemons(10);
 
 
 

@@ -29,41 +29,63 @@ header {
     margin: 10px 0;
 }
 
-/* Estilos para el contenedor de la página */
-.container {
-    max-width: 800px; 
-    margin: 0 auto;
-    padding: 0 10px; 
-}
-
 /* Estilos para el contenedor de los Pokémon */
 .pokemon-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(100px, 1fr)); /* Distribuir en tres columnas */
-    gap: 10px; /* Reducir el espacio entre los Pokémon */
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Distribuir en tres columnas */
+    gap: 40px; /* Reducir el espacio entre los Pokémon */
     margin-top: 10px;
     padding: 0 20px; /* Agregar margen a los lados */
 }
 
 /* Estilos para la imagen del Pokémon y sombras */
 .img-container img {
-    background-color: white;
-    border-radius: 8px;
     width: 100%;
     height: auto;
-    max-height: 250px; /* Reducir la altura máxima */
+    max-height: 120px;
+    border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 /* Estilos para el número del Pokémon */
-.pokemon-block p {
-    background-color: #000;
-    text-align: center;
-    font-size: 8px; /* Tamaño de fuente más pequeño */
-    color: white;
-    padding: 2px 4px; /* Reducir el padding */
-    border-radius: 0 0 4px 4px;
+.pokemon-block {
+    position: relative; /* Agrega posición relativa para alinear elementos absolutos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
+
+.height-info {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #333;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.weight-info {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #333;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+
 
 /* Estilos para el contenedor del spinner */
 #spinner-container {
@@ -81,13 +103,13 @@ header {
     background-color: rgb(197, 195, 195);
     text-align: center;
     padding: 20px;
-    max-width: 80vw; 
-    max-height: 80vh; 
-    overflow: auto; 
-    box-sizing: border-box; 
-    border-radius: 10px; 
+    max-width: 70vw; /* Establece un ancho máximo relativo al ancho de la ventana */
+    max-height: 70vh; /* Establece una altura máxima relativa al alto de la ventana */
+    overflow: auto; /* Agrega desplazamiento si el contenido excede las dimensiones máximas */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    border-radius: 10px; /* Agrega esquinas redondeadas */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin: auto; 
+    margin: auto; /* Centra la alerta en la pantalla */
 }
 
 /* Estilos para el encabezado de la alerta */
@@ -132,3 +154,4 @@ header {
 .stat {
     margin-bottom: 10px;
 }
+
