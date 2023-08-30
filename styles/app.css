@@ -51,7 +51,7 @@ header {
     border-radius: 8px;
     width: 100%;
     height: auto;
-    max-height: 120px; /* Reducir la altura máxima */
+    max-height: 250px; /* Reducir la altura máxima */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -81,6 +81,13 @@ header {
     background-color: rgb(197, 195, 195);
     text-align: center;
     padding: 20px;
+    max-width: 80vw; 
+    max-height: 80vh; 
+    overflow: auto; 
+    box-sizing: border-box; 
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: auto; 
 }
 
 /* Estilos para el encabezado de la alerta */
