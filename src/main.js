@@ -33,6 +33,8 @@ function createPokemonCard(pokemon) {
     // Crea elementos para la tarjeta del Pokémon
     const card = document.createElement("div");
     card.classList.add("pokemon-block");
+    card.style.width = "280px"
+    card.style.height = "240px"
 
     const sprite = document.createElement("img");
     sprite.src = pokemon.sprites.front_default;
@@ -66,12 +68,12 @@ function createPokemonCard(pokemon) {
 
     const typeInfo = document.createElement("div");
     typeInfo.classList.add("type-info");
-    typeInfo.textContent = `Tipo: ${pokemon.types.map(t => t.type.name).join(', ')}`;
+    typeInfo.textContent = capitalizeFirstLetter (pokemon.types.map(t => t.type.name).join(' · '));
     card.appendChild(typeInfo);
 
     const abilityInfo = document.createElement("div");
     abilityInfo.classList.add("ability-info");
-    abilityInfo.textContent = `Habilidad: ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}`;
+    abilityInfo.textContent = capitalizeFirstLetter(pokemon.abilities[0].ability.name);
     card.appendChild(abilityInfo);
 
     const heightInfo = document.createElement("div");

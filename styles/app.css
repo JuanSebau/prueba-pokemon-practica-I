@@ -41,27 +41,16 @@ header {
     justify-content: center;
 }
 
-/*Estilos para el contenedor que trae la info*/
-.details-container{
-    max-width: 400px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 /* Estilos para cada tarjeta de Pokémon */
 .pokemon-block {
     position: relative;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    justify-self: center; /* Para centrar las tarjetas en cada columna */
-    min-width: 300px; /* Ancho minimo de cada tarjeta */
+    justify-self: center; 
+    min-width: 350px; 
     background-color: white;
     margin: 20px;
 }
@@ -94,7 +83,7 @@ header {
 /*Estilos para el numero del Pokémon*/
 .number-info{
     position: relative;
-    top: -100px;
+    top: -140px;
     right: 10px;
     background-color: transparent;
     color: #e9e8e6;
@@ -104,27 +93,31 @@ header {
 /*Estilos para la imagen del Pokémon*/
 .sprite-info{
     position: relative;
-    top: 45px;
-    right: auto;
     z-index: 2;
 }
 
 /*Estilos para el nombre del Pokémon*/
 .name-info{
     position: relative;
-    top: -65px;
+    top: -140px;
+    color: #65625c;
+    font-weight: bold; /*Para poner negrilla*/
+    font-size: 20px;
 }
 
 /*Estilos para la el tipo de Pokémon*/
 .type-info{
     position: relative;
-    top: -50px;
+    top: -110px;
+    font-weight: bold;
 }
 
 /*Estilos para la habilidad del Pokémon*/
 .ability-info{
     position: relative;
-    top: -45px;
+    top: -110px;
+    color: #969490;
+    font-weight: bold;
 }
 
 /* Estilos para el contenedor del spinner */
@@ -200,7 +193,7 @@ header {
         grid-template-columns: minmax(150px, 1fr);
     }
     .pokemon-block{
-        min-width: 80%;
+        min-width: 70%;
     }
 }
     
