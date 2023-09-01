@@ -47,6 +47,33 @@ function createPokemonCard(pokemon) {
     name.classList.add("name");
     name.textContent = capitalizeFirstLetter(pokemon.name);
 
+    const spriteInfo = document.createElement("img");
+    spriteInfo.classList.add("sprite-info");
+    spriteInfo.src = pokemon.sprites.front_default;
+    spriteInfo.style.width = "120px";
+    spriteInfo.style.height = "120px";
+    card.appendChild(spriteInfo);
+
+    const numberInfo = document.createElement("div");
+    numberInfo.classList.add("number-info");
+    numberInfo.textContent = `#${pokemon.id.toString().padStart(3, '0')}`;
+    card.appendChild(numberInfo);
+
+    const nameInfo = document.createElement("div");
+    nameInfo.classList.add("name-info");
+    nameInfo.textContent = capitalizeFirstLetter(pokemon.name);
+    card.appendChild(nameInfo);
+
+    const typeInfo = document.createElement("div");
+    typeInfo.classList.add("type-info");
+    typeInfo.textContent = `Tipo: ${pokemon.types.map(t => t.type.name).join(', ')}`;
+    card.appendChild(typeInfo);
+
+    const abilityInfo = document.createElement("div");
+    abilityInfo.classList.add("ability-info");
+    abilityInfo.textContent = `Habilidad: ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}`;
+    card.appendChild(abilityInfo);
+
     const heightInfo = document.createElement("div");
     heightInfo.classList.add("height-info");
     heightInfo.textContent = `${(pokemon.height / 10).toFixed(1)} m`;
@@ -63,18 +90,10 @@ function createPokemonCard(pokemon) {
     const type = document.createElement("p");
     type.textContent = `Tipo: ${pokemon.types.map(t => t.type.name).join(', ')}`;
 
-    detailsContainer.appendChild(sprite);
-    detailsContainer.appendChild(number);
-    detailsContainer.appendChild(name);
-    detailsContainer.appendChild(type);
-    detailsContainer.appendChild(ability);
-
     card.addEventListener("click", () => {
         detailsContainer.classList.toggle("show-details");
         showPokemonAlert(pokemon);
     });
-
-    card.appendChild(detailsContainer);
 
     pokemonContainer.appendChild(card);
 }
@@ -153,6 +172,7 @@ function hideSpinner() {
     }
 // Carga y muestra 6 Pokémones aleatorios al cargar la página
     fetchRandomPokemons(6);
+
 
 
 

@@ -66,18 +66,7 @@ header {
     margin: 20px;
 }
 
-
-/* Estilos para la imagen del Pokémon y sombras */
-.img-container img {
-    width: 100%;
-    height: auto;
-    max-height: 120px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-/*Estilos para la altura del Pokemon*/
+/*Estilos para la altura del Pokémon*/
 .height-info {
     position: absolute;
     top: -8px;
@@ -90,7 +79,7 @@ header {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-/*Estilos para el peso del Pokemon*/
+/*Estilos para el peso del Pokémon*/
 .weight-info {
     position: absolute;
     top: -8px;
@@ -102,9 +91,41 @@ header {
     font-size: 12px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+/*Estilos para el numero del Pokémon*/
+.number-info{
+    position: relative;
+    top: -100px;
+    right: 10px;
+    background-color: transparent;
+    color: #e9e8e6;
+    z-index: 1;
+    font-size: 100px;
+}
+/*Estilos para la imagen del Pokémon*/
+.sprite-info{
+    position: relative;
+    top: 45px;
+    right: auto;
+    z-index: 2;
+}
 
+/*Estilos para el nombre del Pokémon*/
+.name-info{
+    position: relative;
+    top: -65px;
+}
 
+/*Estilos para la el tipo de Pokémon*/
+.type-info{
+    position: relative;
+    top: -50px;
+}
 
+/*Estilos para la habilidad del Pokémon*/
+.ability-info{
+    position: relative;
+    top: -45px;
+}
 
 /* Estilos para el contenedor del spinner */
 #spinner-container {
