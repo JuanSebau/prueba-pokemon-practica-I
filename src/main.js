@@ -151,8 +151,8 @@ function showSpinner() {
 function hideSpinner() {
         spinner.style.display = "none";
     }
-// Carga y muestra 10 Pokémones aleatorios al cargar la página
-    fetchRandomPokemons(10);
+// Carga y muestra 6 Pokémones aleatorios al cargar la página
+    fetchRandomPokemons(6);
 
 
 
