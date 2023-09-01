@@ -6,7 +6,6 @@ body, h1, h2, h3, p, div {
 
 /* Agrega un estilo general para todos los dispositivos */
 body {
-    background: red;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     font-size: 14px; /* Tamaño de fuente general */
@@ -29,14 +28,44 @@ header {
     margin: 10px 0;
 }
 
-/* Estilos para el contenedor de los Pokémon */
+/* Estilos para el contenedor*/
 .pokemon-container {
+    background-color: #fafafa;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Distribuir en tres columnas */
-    gap: 40px; /* Reducir el espacio entre los Pokémon */
-    margin-top: 10px;
-    padding: 0 20px; /* Agregar margen a los lados */
+    grid-template-columns: repeat(2, 1fr); /* Cambia "minmax(150px, 1fr)" a "1fr" */
+    gap: 10px; /* Reducir el espacio entre los Pokémon */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
+
+/*Estilos para el contenedor que trae la info*/
+.details-container{
+    max-width: 400px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para cada tarjeta de Pokémon */
+.pokemon-block {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    justify-self: center; /* Para centrar las tarjetas en cada columna */
+    min-width: 300px; /* Ancho minimo de cada tarjeta */
+    background-color: white;
+    margin: 20px;
+}
+
 
 /* Estilos para la imagen del Pokémon y sombras */
 .img-container img {
@@ -44,43 +73,30 @@ header {
     height: auto;
     max-height: 120px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el número del Pokémon */
-.pokemon-block {
-    position: relative; /* Agrega posición relativa para alinear elementos absolutos */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
 
 .height-info {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: #333;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 5px;
+    top: -8px;
+    left: -8px;
+    background-color: white;
+    color: black;
+    padding: 8px 3px;
+    border-radius: 50%;
     font-size: 12px;
 }
 
 .weight-info {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #333;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+    background-color: white;
+    color: black;
+    padding: 8px 3px;
+    border-radius: 50%;
     font-size: 12px;
 }
 
