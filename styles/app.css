@@ -133,7 +133,6 @@ header {
 
 /* Estilos para la alerta */
 .pokemon-alert {
-    background-color: rgb(197, 195, 195);
     text-align: center;
     padding: 20px;
     max-width: 70vw; /* Establece un ancho máximo relativo al ancho de la ventana */
@@ -155,12 +154,19 @@ header {
 
 /* Estilos para la imagen de la alerta */
 .pokemon-image {
+    position: absolute;
+    right: calc(50% -75px);
+    top: -57px;
     max-width: 100%;
     height: auto;
     width: 150px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
+}
+/*Estilos para el numero del Pokemon*/
+.pokemon-number{
+    position: relative;
+    top: 35px;
 }
 
 /* Estilos para los detalles de la alerta */

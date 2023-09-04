@@ -53,7 +53,7 @@ function createPokemonCard(pokemon) {
     spriteInfo.classList.add("sprite-info");
     spriteInfo.src = pokemon.sprites.front_default;
     spriteInfo.style.width = "120px";
-    spriteInfo.style.height = "120px";
+    spriteInfo.style.height = "120px";  
     card.appendChild(spriteInfo);
 
     const numberInfo = document.createElement("div");
@@ -116,11 +116,11 @@ function capitalizeFirstLetter(string) {
         const ability = `<p><strong>Ability:</strong> ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}</p>`;
 
         Swal.fire({
-            title: "Información del Pokémon",
+
             html: `
             <div class="pokemon-alert">
                 <div class="pokemon-header">
-                    <p><strong># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
+                    <p><strong class="pokemon-number"># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
                     <img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" class="pokemon-image">
                 </div>
                 <div class="pokemon-details">
@@ -174,6 +174,8 @@ function hideSpinner() {
     }
 // Carga y muestra 6 Pokémones aleatorios al cargar la página
     fetchRandomPokemons(6);
+
+
 
 
 
