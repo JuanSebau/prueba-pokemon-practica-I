@@ -28,6 +28,23 @@ function fetchRandomPokemons(number) {
         fetchRandomPokemon();
     }
 }
+
+function fetchPokemonDescription(url) {
+    return fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        // La descripción suele estar en data.flavor_text_entries en el idioma deseado (por ejemplo, "en" para inglés).
+        // Puedes filtrar la descripción según el idioma o cualquier otro criterio que desees.
+        const descriptions = data.flavor_text_entries;
+        const englishDescription = descriptions.find((entry) => entry.language.name === 'en');
+  
+        return englishDescription ? englishDescription.flavor_text : 'No description available.';
+      })
+      .catch((error) => {
+        console.error('Error fetching Pokémon description:', error);
+        return 'Error fetching description.';
+      });
+  }
 // Crea la tarjeta de un Pokémon y la muestra en el contenedor
 function createPokemonCard(pokemon) {
     // Crea elementos para la tarjeta del Pokémon
@@ -65,6 +82,23 @@ function createPokemonCard(pokemon) {
     nameInfo.classList.add("name-info");
     nameInfo.textContent = capitalizeFirstLetter(pokemon.name);
     card.appendChild(nameInfo);
+
+    fetchPokemonDescription(pokemon.species.url)
+  .then((description) => {
+    // Agrega la descripción al objeto pokemon
+    pokemon.description = description;
+
+    const descriptionInfo = document.createElement("div");
+    descriptionInfo.classList.add("description-info");
+    descriptionInfo.textContent = description;
+  })
+  .catch((error) => {
+    console.error('Error fetching Pokémon description:', error);
+    const descriptionInfo = document.createElement("div");
+    descriptionInfo.classList.add("description-info");
+    descriptionInfo.textContent = 'No description available.';
+  });
+
 
     const typeInfo = document.createElement("div");
     typeInfo.classList.add("type-info");
@@ -114,21 +148,26 @@ function capitalizeFirstLetter(string) {
         const height = `<p><strong>Height:</strong> ${pokemon.height / 10} m</p>`;
         const weight = `<p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>`;
         const ability = `<p><strong>Ability:</strong> ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}</p>`;
-
+        const type = `<p><span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>`
+        const name = `<p><strong>${capitalizeFirstLetter(pokemon.name)}</strong></p>`
+        const number = `<p><strong class="pokemon-number"># ${pokemon.id.toString().padStart(3, '0')}</strong></p>`;
+        const description = `<p><strong>Description:</strong> ${pokemon.description}</p>`;
+        const img = `<img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" class="pokemon-image" style="width: 200px; height: 200px;">`;
         Swal.fire({
 
             html: `
             <div class="pokemon-alert">
                 <div class="pokemon-header">
-                    <p><strong class="pokemon-number"># ${pokemon.id.toString().padStart(3, '0')}</strong></p>
-                    <img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" class="pokemon-image">
+                    ${img}
                 </div>
                 <div class="pokemon-details">
-                    <p><strong>${capitalizeFirstLetter(pokemon.name)}</strong></p>
-                    <p><span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>
+                    ${number}
+                    ${name}
+                    ${type}
                     ${height}
                     ${weight}
                     ${ability}
+                    ${description}
                 </div>
                 <div class="pokemon-stats">
                     <p><strong>Estadísticas</strong></p>
@@ -174,6 +213,7 @@ function hideSpinner() {
     }
 // Carga y muestra 6 Pokémones aleatorios al cargar la página
     fetchRandomPokemons(6);
+
 
 
 
