@@ -131,24 +131,30 @@ header {
     z-index: 2;
     width: 100%;
 }
+.swal2-popup{
+    padding: 20px;
+    width: 500px; 
+    height: 700px; 
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
 
 /* Estilos para la alerta */
 .pokemon-alert {
     text-align: center;
     padding: 20px;
-    max-width: 70vw; /* Establece un ancho máximo relativo al ancho de la ventana */
-    max-height: 70vh; /* Establece una altura máxima relativa al alto de la ventana */
-    overflow: auto; /* Agrega desplazamiento si el contenido excede las dimensiones máximas */
+    height: 600px; 
     box-sizing: border-box; /* Incluye el padding en el tamaño total */
     border-radius: 10px; /* Agrega esquinas redondeadas */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin: auto; /* Centra la alerta en la pantalla */
 }
 
+
 /* Estilos para la imagen de la alerta */
 .pokemon-header {
     position: absolute;
-    top: -70px;
+    top: -50px;
     right: 205px;
     max-width: 100%;
     height: auto;
@@ -160,7 +166,14 @@ header {
 /*Estilos para el numero del Pokemon*/
 .pokemon-number{
     position: relative;
+    top: 10px;
+    color: #a5a8af;
     
+}
+.pokemon-name{
+    position: relative;
+    color: #0d1d2e;
+    font-size: 35px;
 }
 
 /* Estilos para los detalles de la alerta */

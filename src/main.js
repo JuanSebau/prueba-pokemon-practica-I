@@ -149,9 +149,9 @@ function capitalizeFirstLetter(string) {
         const weight = `<p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>`;
         const ability = `<p><strong>Ability:</strong> ${capitalizeFirstLetter(pokemon.abilities[0].ability.name)}</p>`;
         const type = `<p><span class="type" style="background-color: ${firstTypeColor};">${capitalizeFirstLetter(pokemon.types[0].type.name)}</span> <span class="type" style="background-color: ${secondTypeColor};">${capitalizeFirstLetter(pokemon.types[1]?.type.name || '')}</span></p>`
-        const name = `<p><strong>${capitalizeFirstLetter(pokemon.name)}</strong></p>`
+        const name = `<p><strong class="pokemon-name">${capitalizeFirstLetter(pokemon.name)}</strong></p>`
         const number = `<p><strong class="pokemon-number"># ${pokemon.id.toString().padStart(3, '0')}</strong></p>`;
-        const description = `<p><strong>Description:</strong> ${pokemon.description}</p>`;
+        const description = `<p><strong>POKEDEX ENTRY</strong> ${pokemon.description}</p>`;
         const img = `<img src="${pokemon.sprites.front_default}" alt="Imagen del Pokémon" class="pokemon-image" style="width: 200px; height: 200px;">`;
         Swal.fire({
 
@@ -164,16 +164,17 @@ function capitalizeFirstLetter(string) {
                     ${number}
                     ${name}
                     ${type}
+                    ${description}
                     ${height}
                     ${weight}
                     ${ability}
-                    ${description}
                 </div>
                 <div class="pokemon-stats">
                     <p><strong>Estadísticas</strong></p>
                         ${statsHtml}
                 </div>
             </div>`,
+
             
         });
     }
